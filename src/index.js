@@ -4,7 +4,7 @@ const morgan = require("morgan");
 (bodyParser = require("body-parser")),
   (mongoose = require("mongoose")),
   ({ DB } = require("./config/DB")),
-  (itemRoutes = require("./routes/item"));
+  (pokemonRoutes = require("./routes/pokemon"));
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 // routes
-app.use("/items", itemRoutes);
+app.use("/pokemon", pokemonRoutes);
 
 // start the server
 var server = app.listen(port, function () {
