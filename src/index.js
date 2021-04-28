@@ -4,6 +4,7 @@ const morgan = require("morgan");
 (bodyParser = require("body-parser")),
   (mongoose = require("mongoose")),
   ({ DB } = require("./config/DB")),
+  cors = require('cors'),
   (pokemonRoutes = require("./routes/pokemon"));
 
 mongoose.Promise = global.Promise;
@@ -18,6 +19,7 @@ var port = process.env.PORT || 4000;
 // middlewares
 app.use(bodyParser.json());
 app.use(morgan("dev"));
+app.use(cors());
 
 // routes
 app.use("/pokemon", pokemonRoutes);
