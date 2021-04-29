@@ -4,7 +4,8 @@ const morgan = require("morgan");
 (bodyParser = require("body-parser")),
   (mongoose = require("mongoose")),
   ({ DB } = require("./config/DB")),
-  (itemRoutes = require("./routes/item"));
+  cors = require('cors'),
+  (pokemonRoutes = require("./routes/pokemon"));
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -18,9 +19,10 @@ var port = process.env.PORT || 4000;
 // middlewares
 app.use(bodyParser.json());
 app.use(morgan("dev"));
+app.use(cors());
 
 // routes
-app.use("/items", itemRoutes);
+app.use("/pokemon", pokemonRoutes);
 
 // start the server
 var server = app.listen(port, function () {
